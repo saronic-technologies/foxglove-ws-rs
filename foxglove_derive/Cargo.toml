@@ -2,6 +2,11 @@
 name = "foxglove_derive"
 version = "0.1.0"
 edition = "2021"
+license = "MPL-2.0"
+description = "A derive macro for a Foxglove trait."
+homepage = "https://github.com/saronic-technologies/foxglove-ws-rs"
+repository = "https://github.com/saronic-technologies/foxglove-ws-rs"
+readme = "README.md"
 
 [dependencies]
 quote = "1.0.35"
