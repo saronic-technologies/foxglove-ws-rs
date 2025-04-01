@@ -1,1 +1,4 @@
+.direnv
+.envrc
+
 foxglove_derive/target
