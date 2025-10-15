@@ -2,6 +2,12 @@ use proc_macro::TokenStream;
 use quote::{format_ident, quote};
 use syn::{parse_macro_input, DeriveInput};
 
+pub trait Foxglove {
+    fn to_jsonschema() -> String;
+    fn to_foxglove_schema() -> String;
+    fn to_foxglove(&self) -> String;
+}
+
 #[proc_macro_derive(Foxglove)]
 pub fn foxglove(input: TokenStream) -> TokenStream {
     let input = parse_macro_input!(input as DeriveInput);
