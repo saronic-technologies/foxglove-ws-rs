@@ -11,6 +11,7 @@ readme = "README.md"
 [dependencies]
 quote = "1.0.35"
 syn = "2.0.53"
+serde_json = "1.0"
 
 [lib]
 proc-macro = true
