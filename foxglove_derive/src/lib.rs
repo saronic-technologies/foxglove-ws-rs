@@ -1,3 +1,6 @@
+pub extern crate schemars;
+pub extern crate serde_json;
+
 use proc_macro::TokenStream;
 use quote::{format_ident, quote};
 use syn::{parse_macro_input, DeriveInput};
@@ -11,13 +14,13 @@ pub fn foxglove(input: TokenStream) -> TokenStream {
     let expanded = quote! {
         impl Foxglove for #name {
             fn to_jsonschema() -> String {
-                serde_json::to_string(&schemars::schema_for!(#name)).unwrap()
+                $crate::serde_json::to_string(&schemars::schema_for!(#name)).unwrap()
             }
             fn to_foxglove_schema() -> String {
                 String::from(stringify!(#name))
             }
             fn to_foxglove(&self) -> String {
-                serde_json::to_string(&self).unwrap()
+                $crate::serde_json::to_string(&self).unwrap()
             }
         }
 
@@ -31,9 +34,9 @@ pub fn foxglove(input: TokenStream) -> TokenStream {
             #[test]
             #[allow(non_snake_case)]
             fn #test_fn() {
-                let schema = schemars::schema_for!(#name);
-                let schema_json_str = serde_json::to_string(&schema).unwrap();
-                eprintln!("{}", serde_json::to_string_pretty(&schema).unwrap());
+                let schema = $crate::schemars::schema_for!(#name);
+                let schema_json_str = $crate::serde_json::to_string(&schema).unwrap();
+                eprintln!("{}", $crate::serde_json::to_string_pretty(&schema).unwrap());
                 assert!(!schema_json_str.contains("$ref"));
             }
         }
