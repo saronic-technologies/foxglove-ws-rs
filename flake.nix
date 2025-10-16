@@ -2,13 +2,9 @@
   description = "A devShell example";
 
   inputs = {
-    nixpkgs.url      = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url      = "github:NixOS/nixpkgs/nixos-25.05";
     flake-utils.url  = "github:numtide/flake-utils";
-
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
   outputs = { self, nixpkgs, rust-overlay, flake-utils, ... }:
@@ -23,7 +19,7 @@
       {
         devShells.default = mkShell {
           nativeBuildInputs = [
-            rust-bin.nightly.latest.default
+            rust-bin.stable.latest.default
           ];
         };
       }
