@@ -2,14 +2,14 @@ use proc_macro::TokenStream;
 use quote::{format_ident, quote};
 use syn::{parse_macro_input, DeriveInput};
 
-#[proc_macro_derive(Foxglove)]
+#[proc_macro_derive(ToFoxglove)]
 pub fn foxglove(input: TokenStream) -> TokenStream {
     let input = parse_macro_input!(input as DeriveInput);
     let name = &input.ident;
     let test_mod = format_ident!("test_{}", name);
     let test_fn = format_ident!("check_schema_refs_{}", name);
     let expanded = quote! {
-        impl Foxglove for #name {
+        impl foxglove_trait::Foxglove for #name {
             fn to_jsonschema() -> String {
                 serde_json::to_string(&schemars::schema_for!(#name)).unwrap()
             }

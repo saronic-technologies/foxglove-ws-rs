@@ -1,4 +1,3 @@
 .direnv
-.envrc
-
-foxglove_derive/target
+target
+foxglove_derive/Cargo.lock
