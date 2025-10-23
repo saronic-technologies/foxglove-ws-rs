@@ -1,6 +1,6 @@
 [package]
 name = "foxglove-trait"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2021"
 license = "MPL-2.0"
 description = "A trait and derive macro for Foxglove schemas."
@@ -9,4 +9,4 @@ repository = "https://github.com/saronic-technologies/foxglove-ws-rs"
 readme = "README.md"
 
 [dependencies]
-foxglove_derive = { path = "foxglove_derive" }
+foxglove-derive = { path = "foxglove-derive" }

@@ -3,18 +3,18 @@
 version = 4
 
 [[package]]
-name = "foxglove-trait"
-version = "0.1.0"
-dependencies = [
- "foxglove_derive",
-]
-
-[[package]]
-name = "foxglove_derive"
+name = "foxglove-derive"
 version = "0.2.0"
 dependencies = [
  "quote",
  "syn",
+]
+
+[[package]]
+name = "foxglove-trait"
+version = "0.2.0"
+dependencies = [
+ "foxglove-derive",
 ]
 
 [[package]]
